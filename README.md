@@ -9,7 +9,7 @@ One Suite Booking Application
 	then right click and select Run as -> Junit Test
 	Check the console and the tab JUnit
 4) Test coverage is done for a Smoke Test and to test the CRUD repository
-5) Application has an UI using the Thymeleaf http://www.thymeleaf.org template engine
+5) Application has an UI using the Thymeleaf http://www.thymeleaf.org template engine. 
 	Using the UI you can perform CRUD operations and check all required validations.
 6) UI is using bootstrap CSS and JQuery (date picker module).
 7) An extra validation is performed to check the Presidential Suite availability
