@@ -14,7 +14,7 @@ One Suite Booking Application
 6) UI is using bootstrap CSS and JQuery (date picker module).
 7) An extra validation is performed to check the Presidential Suite availability
 9) An error handling class is implemented for reservation not found. 
-	Most input errors are handled at front-end layer with JAVASCRIPT
+	Most input errors are handled at the front-end layer with JAVASCRIPT
 10) Concurrency (simultaneous requests) are managed by the Tomcat servlet engine.
 	Max threads are set on application.properties -> server.tomcat.max-threads=100
-	If the application is deployed as a micro service we can implement load balancing using DOCKER and KUBERNETES
+	If the application is deployed as a micro service you can implement load balancing using DOCKER and KUBERNETES
