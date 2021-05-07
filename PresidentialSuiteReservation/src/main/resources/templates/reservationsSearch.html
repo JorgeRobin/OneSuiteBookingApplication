@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Reservations search</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<link rel="stylesheet" href="/bootstrap.min.css" media="screen"/>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  	<script>
+	  $( function() {
+	    $( "#from" ).datepicker({
+		    dateFormat: 'yy-mm-dd'
+		});
+	    $( "#to" ).datepicker({
+		    dateFormat: 'yy-mm-dd'
+		});
+	  } );
+
+	  function validateForm() {
+		  var from = document.getElementById("checkin").value;
+		  var to = document.getElementById("checkout").value;
+		  var fromDate = new Date(from);
+		  var toDate = new Date(to);
+		  var now = new Date();
+		  return true;
+	  }
+    </script>
+ 
+</head>
+<body>
+	<div class="container">
+      <div class="page-header" id="banner">
+        <div class="row">
+          <div class="col-lg-8 col-md-7 col-sm-6">
+            <h1>Search Bookings</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-7 col-sm-6">
+			<form th:action="@{/reservationsSearch}" method="post" enctype="multipart/form-data" class="form-horizontal"
+						onSubmit="return validateForm();">
+            	<fieldset>
+                 	<div class="form-group">
+	                    <label class="col-lg-3 control-label">From</label>
+	                    <div class="col-lg-9">
+	                    	<input type="text" class="form-control" name="from" id="from"/>
+	                    </div>
+                	</div>
+                	<div class="form-group">
+	                    <label class="col-lg-3 control-label">To</label>
+	                    <div class="col-lg-9">
+	                    	<input type="text" class="form-control" name="to" id="to"/>
+	                    </div>
+                	</div>
+                	<br/><br/>
+            		<div class="form-group">
+                		<div class="col-lg-6" style="align:left;">
+                			<button type="submit" class="btn btn-primary" name="button">Search Reservations</button>
+                		</div>
+                	</div>
+                </fieldset>
+                <br/><br/>
+		        <div class="row">
+		        	<a th:href="@{/reservations}">Go to Reservations</a>
+		        </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>

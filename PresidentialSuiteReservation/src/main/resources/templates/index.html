@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Reservations Index</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<link rel="stylesheet" href="/bootstrap.min.css" media="screen"/>
+</head>
+<body>
+	<div class="container">
+      <div class="page-header" id="banner">
+        <div class="row">
+          <div class="col-lg-8 col-md-7 col-sm-6">
+            <h1>Reservations Index</h1>
+           </div>
+        </div>    
+        <div class="row">
+        	<h3><a th:href="@{/reservations}">Reservations Update</a></h3>
+        	<br/>
+        	<h3><a th:href="@{/reservationsSearch}">Search Reservations</a></h3>
+        </div>
+      </div>
+	</div>
+
+</body>
+</html>
