@@ -5,7 +5,7 @@ One Suite Booking Application
 	then right click and select Run as -> Spring Boot App.
 	Check the console at the bottom for something like "Started Application in 15.458 seconds"
 	Open a browser window and enter http://localhost:8080 
-3) To run the test, right click on classes under package "com.example.test"
+3) To run the tests, right click on classes under package "com.example.test"
 	then right click and select Run as -> Junit Test
 	Check the console and the tab JUnit
 4) Test coverage is done for a Smoke Test and to test the CRUD repository
