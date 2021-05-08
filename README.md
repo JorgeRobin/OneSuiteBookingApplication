@@ -12,7 +12,7 @@ Presidential Suite Booking Application
 	- Check-in and Check-out dates must be valid if entered
 	- Each booking allows up to three people for up to three days.
     	- Each booking can be made at least one day and at most 30 days before arrival.
-5) Test coverage is 100% for the RESTful API calls (see ReservationRESTfulTest.java
+5) Test coverage is 100% for the RESTful API calls (see ReservationRESTfulTest.java)
 	There is also a JAVA class SmokeTest.java used by JMeter to test performance
 6) Application has also an UI using the Thymeleaf http://www.thymeleaf.org template engine
 	Using the UI you can perform CRUD operations and check all required validations.
