@@ -1,5 +1,5 @@
 Presidential Suite Booking Application
-1) This a JAVA application using SPRING_BOOT framework and H2 database for storage
+1) This a JAVA 8 application using SPRING_BOOT framework and H2 database for storage
 2) To run it with Eclipse IDE, find the class Application in left side package explorer "com.example"
 	then right click and select Run as -> Spring Boot App.
 	Check the console at the bottom for something like "Started Application in 15.458 seconds"
