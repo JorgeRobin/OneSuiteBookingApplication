@@ -48,6 +48,15 @@ public class Reservation {
 		this.checkout = checkout;
 		this.status = status;
 	}
+	
+	public Reservation(long id, String firstName, String lastName, String email, 
+			int numberGuests) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.numberGuests = numberGuests;
+	}
 		
 	public long getId() {
 		return id;
