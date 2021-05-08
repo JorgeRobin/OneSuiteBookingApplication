@@ -220,7 +220,7 @@ public class ReservationsController {
     
     @GetMapping("/bookings/{id}")
     @ResponseBody
-    public Reservation findBooking(@PathVariable Long id) {
+    public Reservation findOne(@PathVariable("id") long id) {
     	
     	Reservation reservation;
     	try {
@@ -233,8 +233,15 @@ public class ReservationsController {
     }
 
     @PutMapping("/bookings/{id}")
-    public Reservation updateBooking(String firstName, String lastName, String email,
-    		String numberGuests, String checkin, String checkout, @PathVariable Long id) {
+    @ResponseBody
+    public Reservation updateBooking(
+    		@RequestParam("firstName") String firstName, 
+    		@RequestParam("lastName") String lastName, 
+    		@RequestParam("email") String email,
+    		@RequestParam("numberGuests") String numberGuests, 
+    		@RequestParam("checkin") String checkin, 
+    		@RequestParam("checkout") String checkout, 
+    		@PathVariable("id") long id) {
       Reservation newReservation = new Reservation();
       newReservation.setFirstName(firstName);
       newReservation.setLastName(firstName);
@@ -264,8 +271,56 @@ public class ReservationsController {
     }
 
     @DeleteMapping("/bookings/{id}")
-    public void deleteReservation(@PathVariable Long id) {
-      repository.deleteById(id);
+    @ResponseBody
+    public String deleteOne(@PathVariable("id") long id) {
+    	boolean found = true;
+    	String result = "success";
+       	try {
+    		Reservation reservation = repository.findById(id).get();
+    		System.out.println("Debug - ReservationController - deleteOne - id " + id + " ,email " + reservation.getEmail());
+    	} catch (Exception e) {
+    		found = false;
+    	}
+       	if (found) {
+       		repository.deleteById(id);     		
+       	} else {
+       		result = "failed";
+       	}
+       	
+       	return result;
+    }
+    
+    @PostMapping(value="/bookingsSearch")
+    @ResponseBody
+    public List<Reservation> bookingsSearch(
+    		@RequestParam("from") String from, 
+    		@RequestParam("to") String to) {
+    	Iterable<Reservation> reservationsIterable = repository.findAll();
+    	List<Reservation> reservations = new ArrayList<Reservation>();
+    	Calendar c = Calendar.getInstance();
+    	long now = c.getTime().getTime();
+    	c.add(Calendar.DATE, 30);
+    	long now30days = c.getTime().getTime();
+    	java.sql.Date fromDate = new java.sql.Date(now);
+    	java.sql.Date toDate = new java.sql.Date(now30days);
+    	if (from != null && !from.isEmpty()) {
+     		fromDate = Date.valueOf(from);		
+    	}
+    	if (to != null && !from.isEmpty()) {
+    		toDate = Date.valueOf(to);		
+    	}
+        System.out.println("Debug - ReservationController - reservationsSearchDates - fromDate " + 
+        			fromDate +  ", toDate " + toDate);
+        Iterator<Reservation> it = reservationsIterable.iterator();
+        Reservation reservation = new Reservation();
+        while (it.hasNext()) {
+        	reservation = it.next();
+        	Date checkin = reservation.getCheckin();
+    		if ((checkin.compareTo(fromDate) >= 0) && (checkin.compareTo(toDate) <= 0)) {
+    			reservations.add(reservation);
+    		}
+        }
+        return reservations;
     }
     
 }
