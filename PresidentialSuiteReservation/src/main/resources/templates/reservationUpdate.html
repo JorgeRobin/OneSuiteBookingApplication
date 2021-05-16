@@ -86,7 +86,7 @@
                 	<div class="form-group">
 	                    <label class="col-lg-2 control-label">Number of Guests</label>
 	                    <div class="col-lg-6">
-	                    	<input type="text" required class="form-control"  id="numberGuests" name="numberGuests"
+	                    	<input type="number" required min="1" max="3" class="form-control"  id="numberGuests" name="numberGuests"
 	                    		th:value="${reservation.numberGuests}"/>
 	                    </div>
                 	</div>
